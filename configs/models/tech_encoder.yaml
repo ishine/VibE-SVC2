@@ -1,0 +1,58 @@
+pitch_tech_enc:
+  conv_filter_size: 1024
+  conv_kernel_size: 
+  - [31, 1] 
+  - [31, 1] 
+  - [31, 1] 
+  - [31, 1] 
+  encoder_dropout: 0.2
+  encoder_head: 2
+  encoder_hidden: 256
+  encoder_layer: 4
+  max_seq_len: 2000
+zs_pitch_tech_enc:
+  conv_filter_size: 512
+  conv_kernel_size: 
+  - [31, 1] 
+  - [15, 1] 
+  - [7, 1] 
+  - [3, 1] 
+  encoder_dropout: 0.2
+  encoder_head: 2
+  encoder_hidden: 256
+  encoder_layer: 4
+  max_seq_len: 2000
+energy_tech_enc:
+  conv_filter_size: 1024
+  conv_kernel_size: 
+  - [31, 1] 
+  - [31, 1] 
+  - [31, 1] 
+  - [31, 1] 
+  encoder_dropout: 0.2
+  encoder_head: 2
+  encoder_hidden: 256
+  encoder_layer: 4
+  max_seq_len: 2000
+zs_energy_tech_enc:
+  conv_filter_size: 512
+  conv_kernel_size:
+  - [31, 1] 
+  - [15, 1] 
+  - [7, 1] 
+  - [3, 1] 
+  encoder_dropout: 0.2
+  encoder_head: 2
+  encoder_hidden: 256
+  encoder_layer: 4
+  max_seq_len: 2000
+mel_style_encoder:
+  n_mel_channels : 1
+  d_melencoder : 256
+  n_spectral_layer : 2
+  n_temporal_layer : 2
+  n_slf_attn_layer : 1
+  n_slf_attn_head : 2
+  kernel_size : 31
+  dropout : 0.1
+  max_seq_len: 2000

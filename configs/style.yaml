@@ -1,0 +1,12 @@
+pitch_technique:
+  straight: 0
+  vibrato: 1
+  Control_Group: 0
+  Vibrato_Group: 1
+timbre_technique:
+  straight: 0
+  belt: 1
+  breathy: 2
+  vocal_fry: 3
+
+

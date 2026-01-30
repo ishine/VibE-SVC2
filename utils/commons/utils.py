@@ -1,0 +1,181 @@
+import logging
+import os
+import subprocess
+import sys
+from collections import deque
+
+import numpy as np
+import torch
+import yaml
+from scipy.io.wavfile import read
+from torch.nn import functional as F
+
+logging.basicConfig(stream=sys.stdout, level=logging.WARN)
+
+
+class DotDict(dict):
+    def __getattr__(*args):
+        val = dict.get(*args)
+        return DotDict(val) if type(val) is dict else val
+
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
+
+    def __hash__(self):
+        # Convert to a frozenset of sorted items to make it hashable
+        try:
+            return hash(frozenset(self._flatten().items()))
+        except TypeError:
+            raise TypeError("Unhashable value inside DotDict")
+
+
+def summarize(
+    writer,
+    global_step,
+    scalars={},
+    histograms={},
+    images={},
+    audios={},
+    audio_sampling_rate=22050,
+):
+    for k, v in scalars.items():
+        writer.add_scalar(k, v, global_step)
+    for k, v in histograms.items():
+        writer.add_histogram(k, v, global_step)
+    for k, v in images.items():
+        writer.add_image(k, v, global_step, dataformats="HWC")
+    for k, v in audios.items():
+        writer.add_audio(k, v, global_step, audio_sampling_rate)
+
+
+def load_wav_to_torch(full_path):
+    sampling_rate, data = read(full_path)
+    return torch.FloatTensor(data.astype(np.float32)), sampling_rate
+
+
+def load_filepaths_and_text(filename, split="|"):
+    with open(filename, encoding="utf-8") as f:
+        filepaths_and_text = [line.strip().split(split) for line in f]
+    return filepaths_and_text
+
+
+def check_git_hash(model_dir):
+    source_dir = os.path.dirname(os.path.realpath(__file__))
+    if not os.path.exists(os.path.join(source_dir, ".git")):
+        logger.warn(
+            "{} is not a git repository, therefore hash value comparison will be ignored.".format(
+                source_dir
+            )
+        )
+        return
+
+    cur_hash = subprocess.getoutput("git rev-parse HEAD")
+
+    path = os.path.join(model_dir, "githash")
+    if os.path.exists(path):
+        saved_hash = open(path).read()
+        if saved_hash != cur_hash:
+            logger.warn(
+                "git hash values are different. {}(saved) != {}(current)".format(
+                    saved_hash[:8], cur_hash[:8]
+                )
+            )
+    else:
+        open(path, "w").write(cur_hash)
+
+
+def get_logger(model_dir, filename="train.log"):
+    global logger
+    logger = logging.getLogger(os.path.basename(model_dir))
+    logger.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter("%(asctime)s\t%(name)s\t%(levelname)s\t%(message)s")
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
+    h = logging.FileHandler(os.path.join(model_dir, filename))
+    h.setLevel(logging.DEBUG)
+    h.setFormatter(formatter)
+    logger.addHandler(h)
+    return logger
+
+
+def repeat_expand_2d(content, target_len, mode="left"):
+    # content : [h, t]
+    return (
+        repeat_expand_2d_left(content, target_len)
+        if mode == "left"
+        else repeat_expand_2d_other(content, target_len, mode)
+    )
+
+
+def repeat_expand_2d_left(content, target_len):
+    # content : [h, t]
+
+    src_len = content.shape[-1]
+    target = torch.zeros([content.shape[0], target_len], dtype=torch.float).to(
+        content.device
+    )
+    temp = torch.arange(src_len + 1) * target_len / src_len
+    current_pos = 0
+    for i in range(target_len):
+        if i < temp[current_pos + 1]:
+            target[:, i] = content[:, current_pos]
+        else:
+            current_pos += 1
+            target[:, i] = content[:, current_pos]
+
+    return target
+
+
+# mode : 'nearest'| 'linear'| 'bilinear'| 'bicubic'| 'trilinear'| 'area'
+def repeat_expand_2d_other(content, target_len, mode="nearest"):
+    # content : [h, t]
+    content = content[None, :, :]
+    target = F.interpolate(content, size=target_len, mode=mode)[0]
+    return target
+
+
+def load_config(path_config):
+    with open(path_config, "r") as config:
+        args = yaml.safe_load(config)
+    args = DotDict(args)
+    return args
+
+
+def save_config(path_config, config):
+    config = dict(config)
+    with open(path_config, "w") as f:
+        yaml.dump(config, f)
+
+
+def split_list_per_gpus(n_gpus, flist):
+    """
+    Split list for multi-gpu inference mode.
+    """
+    len_chunk = len(flist) // n_gpus
+    list_per_gpu = [flist[len_chunk * i : len_chunk * (i + 1)] for i in range(n_gpus)]
+    list_per_gpu[-1] += flist[len_chunk * (n_gpus) :]
+
+    # Shape of list_per_gpu : [n_gpus, len_chunk]
+    return list_per_gpu
+
+
+def list_to_chunk(lst, n):
+    return [lst[i : i + n] for i in range(0, len(lst), n)]
+
+
+def get_ref_list(audio_list, mp=False):
+    ref_list = []
+    style_dict = {"straight": deque(), "vibrato": deque()}
+    for fname in audio_list:
+        ftech = fname.split("/")[-1].split("#")[2]
+        style_dict[ftech].append(fname)
+
+    for fname in audio_list:
+        ftech = fname.split("/")[-1].split("#")[2]
+        if ftech == "straight":
+            target_tech = "vibrato"
+        else:
+            target_tech = "straight"
+        ref_list.append(style_dict[target_tech].popleft())
+    return ref_list

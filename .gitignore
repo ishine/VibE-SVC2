@@ -1,0 +1,15 @@
+*/*/*/__pycache__/*
+*/*/__pycache__/*
+*/__pycache__/*
+__pycache__/*
+
+dataset/*
+logs/*
+pretrain/*
+results/*
+vocoder/*
+
+style_predictor/*/__pycache__/*
+style_predictor/*/*.pt
+
+check_pt.py

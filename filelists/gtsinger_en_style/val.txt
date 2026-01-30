@@ -1,0 +1,268 @@
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#What Are Words#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#Fly Me to the Moon#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Heart Will Go On#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Call Me Maybe#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#treasure#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#Stay#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Back to December#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Cardigan#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#who says#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Dream It Possible#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#sleepyhead#0010_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#All I Ask#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Million Reasons#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Enchanted#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Vibrato#my heart will go on#0012_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Cardigan#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Let It Go#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Shallow#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#for the first time in forever#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#All of Me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#god is a girl#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#Safe and Sound#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Unconditionally#0001_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Yesterday Once More#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Love Story#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Take a Bow#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#who says#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#treasure#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#You Belong With Me#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Love Me Like You Do#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Shallow#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Safe and Sound#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#beauty and the beast#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#You Belong With Me#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#edelweiss#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#Always Remember Us This Way#0012_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Unconditionally#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#Safe and Sound#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Always Remember Us This Way#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#I Knew You Were Trouble#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Love Story#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#All I Ask#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#All of Me#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#who says#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#All of Me#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#my heart will go on#0008_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Love Me Like You Do#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#Enchanted#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#somewhere over the rainbow#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Call Out My Name#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Talking to the Moon#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#la vie en rose#0006_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#All of Me#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#safe and sound#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#god is a girl#0004_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Rolling in the Deep#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#big big world#0017_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Someone You Loved#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#love stroy#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Shallow#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Yesterday Once More#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#how does a moment last forever#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#My Heart Will Go On#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Dream It Possible#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#for the first time in forever#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#my love#0016_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#I Knew You Were Trouble#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#let it go#0021_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Rolling in the Deep#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Five Hundred Miles#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Someone You Loved#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Cardigan#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Vibrato#memory#0023_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Shallow#0010_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Enchanted#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Young And Beautiful#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Safe and Sound#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#All I Ask#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#My Heart Will Go On#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#What Are Words#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Love Me Like You Do#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Long Live#0010_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#YOUTH#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Vibrato#memory#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Lavender Haze#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Safe and Sound#0000_1.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#trouble is a friend#0013_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Blank Space#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Unconditionally#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#who says#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#I Knew You Were Trouble#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#You Belong With Me#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#Love Me Like You Do#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Shallow#0002_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Lemon Tree#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#clouds#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Love Me Like You Do#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#You Belong With Me#0012_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#I Knew You Were Trouble#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#A Thousand Years#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#Someone Like You#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#beauty and the beast#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Sparks Fly#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Long Live#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#tell me that you love me#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Someone Like You#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#how does a moment last forever#0013_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Young And Beautiful#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Take a Bow#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Fly Me to the Moon#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Rolling in the Deep#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Call Out My Name#0003_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#You Belong With Me#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Always Remember Us This Way#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#I Knew You Were Trouble#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#Someone Like You#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Hey Jude#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Someone Like You#0010_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#I Knew You Were Trouble#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#My Heart Will Go On#0013_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Shallow#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#if you love me for me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Love#0003_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Enchanted#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#trouble is a friend#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#You Belong With Me#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#Someone You Loved#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Easy On Me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Someone Like You#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#if you love me for me#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#beauty and the beast#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Safe and Sound#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#All I Ask#0008_1.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Shallow#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Lavender Haze#0007_1.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#if you love me for me#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Heart Will Go On#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#My Love#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Million Reasons#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#clouds#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Love Story#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#god is a girl#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Yesterday Once More#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#I Knew You Were Trouble#0005_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#All of Me#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Rolling in the Deep#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Someone You Loved#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Safe and Sound#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Enchanted#0008_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Summertime Sadness#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#you raise me up#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#The Show#0001_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#My Love#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#This Is Me#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Someone Like You#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Easy On Me#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Style#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Young And Beautiful#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#make it shine#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#tell me that you love me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#tell me that you love me#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#My Heart Will Go On#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#You Belong With Me#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#The Show#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#All I Ask#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Sparks Fly#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#A Thousand Years#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#All of Me#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Shallow#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Dream It Possible#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#my love#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#My Heart Will Go On#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Love Story#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Love Story#0000_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#I Knew You Were Trouble#0007_1.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#you raise me up#0009_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Always Remember Us This Way#0009_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#I Knew You Were Trouble#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#A Thousand Years#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#god is a girl#0013_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#All I Ask#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#A Thousand Years#0011_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Someone Like You#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#Long Live#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Love Me Like You Do#0001_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#Safe and Sound#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Yesterday Once More#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#someday or oneday#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#My Heart Will Go On#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#You Raise Me Up#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#All I Ask#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#I Knew You Were Trouble#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Love Me Like You Do#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Someone Like You#0009_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Firework#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#god is a girl#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Young And Beautiful#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#beauty and the beast#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Pharyngeal#I Knew You Were Trouble#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#make it shine#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#Young And Beautiful#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#All of Me#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#All of Me#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Rolling in the Deep#0006_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Dark Paradise#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#Easy On Me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#make it shine#0018_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Glissando#My Heart Will Go On#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#All I Ask#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Love#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Breathy#Stay#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#for the first time in forever#0011_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Love on the Brain#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#All of Me#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Shallow#0006_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#Someone You Loved#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Yesterday Once More#0005_1.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#love stroy#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Vibrato#my heart will go on#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#What Are Words#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#A Thousand Years#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Vibrato#Someone Like You#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Hello#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#City Of Stars#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Vibrato_Group#Vibrato#memory#0007_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Dark Paradise#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Exile#0004_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#Enchanted#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#A Thousand Years#0010_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Love on the Brain#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Stay#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#love stroy#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#What Are Words#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#Arriety's song#0007_1.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#My Heart Will Go On#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#You Raise Me Up#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#Arriety's song#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#Dream It Possible#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Heart Will Go On#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#What Are Words#0011_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#all is found#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Someone Like You#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#la vie en rose#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#somewhere over the rainbow#0008_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Mixed_Voice_and_Falsetto#you raise me up#0018_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#monsters#0003_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Vibrato_Group#Vibrato#You Belong With Me#0012_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#treasure#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Breathy#All of Me#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Enchanted#0009_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#You Belong With Me#0003_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#love stroy#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Someone Like You#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Vibrato_Group#Vibrato#My Heart Will Go On#0002_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Glissando#Rolling in the Deep#0005_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#tell me that you love me#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#Five Hundred Miles#0000_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Love Story#0001_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#I Know Places#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Vibrato#Someone You Loved#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#Easy On Me#0007_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Mixed_Voice_and_Falsetto#This Is Me#0006_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Breathy#treasure#0004_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Pharyngeal#monsters#0001_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Glissando#god is a girl#0005_0.wav
+./dataset/gtsinger_en_style/EN-Tenor-1/EN-Tenor-1#English#Control_Group#Mixed_Voice_and_Falsetto#Always Remember Us This Way#0009_0.wav
+./dataset/gtsinger_en_style/EN-Alto-2/EN-Alto-2#English#Control_Group#Pharyngeal#All of Me#0002_0.wav
+./dataset/gtsinger_en_style/EN-Alto-1/EN-Alto-1#English#Control_Group#Vibrato#if you love me for me#0000_0.wav

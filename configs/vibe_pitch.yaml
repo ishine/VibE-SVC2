@@ -1,0 +1,110 @@
+data:
+  # audio config
+  duration: 2
+  sampling_rate: 24000
+  hop_size: 256
+  extensions:
+  - wav
+  eps: 1e-6
+  f0_predictor : rmvpe
+
+  # content encoder config
+  encoder: hubertsoft # 1. vec768l12, 2.vec256l9, 3. hubertsoft , 4.whisper-ppg, 5. whisper-ppg-large
+  encoder_hop_size: 320
+  encoder_out_channels: 256
+  encoder_sample_rate: 16000
+  encoder_unit_interpolate_mode: nearest
+  
+  # filelist config
+  flist_test: test.txt
+  flist_train: train.txt
+  flist_valid: val.txt
+
+# environment config
+env:
+  exp: vocalset_pitch
+  expdir: ./logs/vibe_pitch/diffusion
+  port: '7002'
+
+# model config
+model:
+  diffusion:
+    k_step_max: 1000
+    n_chans: 512
+    n_hidden: 256
+    n_layers: 20
+    timesteps: 1000
+    type: Diffusion
+    infer_method: dpm-solver++
+    infer_speedup: 10
+  LUT:
+    n_spk: 20
+    n_p_tech: 2
+    n_t_tech: 1
+  aug_type:
+    use_pitch_aug: false
+    use_volume_aug: false
+  vocoder:
+    type: bigvgan_v2
+
+# singing style dict
+singing_techniques:
+  pitch_tech:
+    straight: 0
+    vibrato: 1
+    Control_Group: 0
+    Vibrato_Group: 1
+  timbre_tech:
+    straight: 0
+    belt: 1
+    breathy: 2
+    vocal_fry: 3
+
+# speaker dict
+spk:
+  VocalSet#female1: 3
+  VocalSet#female2: 18
+  VocalSet#female3: 15
+  VocalSet#female4: 4
+  VocalSet#female5: 10
+  VocalSet#female6: 16
+  VocalSet#female7: 12
+  VocalSet#female8: 2
+  VocalSet#female9: 13
+  VocalSet#male1: 17
+  VocalSet#male10: 9
+  VocalSet#male11: 6
+  VocalSet#male2: 11
+  VocalSet#male3: 0
+  VocalSet#male4: 5
+  VocalSet#male5: 19
+  VocalSet#male6: 8
+  VocalSet#male7: 1
+  VocalSet#male8: 7
+  VocalSet#male9: 14
+
+# trainer config
+train:
+  optimizer:
+    betas:
+    - 0.8
+    - 0.99
+    decay_step: 100000
+    epochs: 200000
+    max_training_steps : 200000
+    eps: 1e-8
+    gamma: 0.999875
+    lr: 0.0003
+    weight_decay: 0
+  d_loader:
+    batch_size: 256
+    num_workers: 4
+  cache:
+    cache_all_data: true
+    cache_device: cuda
+    cache_fp16: true
+  logger:
+    interval_force_save: 20000
+    interval_log: 1000
+    interval_val: 50000
+    save_opt: true

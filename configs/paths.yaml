@@ -1,0 +1,20 @@
+svc:
+  pitch_style_svc:
+    model : "./pretrain/vibe_pitch/model_200000.pt"
+    config : "./pretrain/vibe_pitch/config.yaml"
+  timbre_style_svc:
+    model: "./pretrain/vibe_timbre/model_200000.pt"
+    config: "./pretrain/vibe_timbre/config.yaml"
+style_converter:
+  pitch_ID: 
+    model: "./pretrain/style_converter/pitch_ID/model_100000.pt"
+    config: "./pretrain/style_converter/pitch_ID/config.yaml"
+  pitch_ZS:
+    model: "./pretrain/style_converter/pitch_ZS/model_100000.pt"
+    config: "./pretrain/style_converter/pitch_ZS/config.yaml"
+  energy_ID:
+    model: "./pretrain/style_converter/energy_ID/model_60000.pt"
+    config: "./pretrain/style_converter/energy_ID/config.yaml"
+  energy_ZS:
+    model: "./pretrain/style_converter/energy_ZS/model_100000.pt"
+    config: "./pretrain/style_converter/energy_ZS/config.yaml"

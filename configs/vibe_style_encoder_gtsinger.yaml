@@ -1,0 +1,95 @@
+data:
+  # audio config
+  duration: 2
+  sampling_rate: 24000
+  hop_size: 256
+  window_size: 1024
+  extensions:
+  - wav
+  eps: 1e-6
+  f0_predictor: rmvpe
+
+  # content encoder config
+  encoder_unit_interpolate_mode: nearest
+  
+  # filelist config
+  flist_test: test.txt
+  flist_train: train.txt
+  flist_valid: val.txt
+
+  # dwt config
+  dwt_type : db10
+  dwt_level : 4
+
+
+# environment config
+env:
+  exp: gtsinger_en_style
+  expdir: ./logs/gtsinger_en_style/style_converter/pitch_ZS
+  port: '7002'
+
+model:
+  diffusion:
+    k_step_max: 1000
+    n_chans: 512
+    n_hidden: 256
+    n_layers: 20
+    timesteps: 1000
+    type: Diffusion
+    infer_method: dpm-solver++
+    infer_speedup: 10
+  LUT:
+    n_spk: 3
+    n_p_tech: 2
+    n_t_tech: 1
+  aug_type:
+    use_pitch_aug: false
+    use_volume_aug: false
+  vocoder:
+    type: bigvgan_v2
+
+# singing style dict
+singing_techniques:
+  pitch_tech:
+    straight: 0
+    vibrato: 1
+    Control_Group: 0
+    Vibrato_Group: 1
+  timbre_tech:
+    straight: 0
+    belt: 1
+    breathy: 2
+    vocal_fry: 3
+
+# speaker dict
+spk:
+  EN-Alto-1: 0
+  EN-Alto-2: 1
+  EN-Tenor-1: 2
+
+# trainer config
+train:
+  optimizer:
+    betas:
+    - 0.8
+    - 0.99
+    decay_step: 100000
+    epochs: 100000
+    max_training_steps : 100000
+    eps: 1e-9
+    gamma: 0.999875
+    lr: 0.0003
+    disc_lr : 0.00001
+    weight_decay: 0
+  d_loader:
+    batch_size: 64
+    num_workers: 1
+  cache:
+    cache_all_data: true
+    cache_device: cuda
+    cache_fp16: true
+  logger:
+    interval_force_save: 20000
+    interval_log: 100
+    interval_val: 50000
+    save_opt: true
