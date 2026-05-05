@@ -28,11 +28,13 @@ def main():
     if cfg.infer_mode == "pitch":
         if not cfg.pitch_zeroshot:
             from inference.run_vibesvcII import run
+            tech_list = ["straight", "vibrato"]
         else:
 
             from inference.run_zsvibesvcII import run
+            tech_list = ['Control_Group','Vibrato_Group']
 
-        tech_list = ["straight", "vibrato"]
+        # tech_list = ["straight", "vibrato"]
 
     elif cfg.infer_mode == "timbre":
         from inference.run_vibesvcII import run
@@ -190,6 +192,18 @@ def parse_args():
     )
     parser.add_argument(
         "--rate_scale", type=float, default=1.0, help="Value for global rate scaling"
+    )
+    parser.add_argument(
+        "--extent_scale_energy",
+        type=float,
+        default=1.0,
+        help="Value for energy extent scaling",
+    )
+    parser.add_argument(
+        "--rate_scale_energy",
+        type=float,
+        default=1.0,
+        help="Value for energy rate scaling",
     )
     parser.add_argument(
         "-vfe",

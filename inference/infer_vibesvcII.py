@@ -77,7 +77,8 @@ class Svc(BaseSVC):
         uv = uv.view(1, 1, -1)
 
         # interpolate smooth f0
-        orig_len = low_f0.shape[1]
+        orig_len = low_f0.shape[-1]
+        
 
         # squeeze or stretch for rate control
         if rate_scale != 1.0:
@@ -109,24 +110,33 @@ class Svc(BaseSVC):
         pred_f0 = 2**pred_lf0 - self.eps_torch
 
         # squeeze or stretch back to original time resolution
+
         if rate_scale != 1.0:
             downsampler = torch.nn.Upsample(size=(orig_len,))
             pred_f0 = downsampler(pred_f0.transpose(1, 2)).squeeze(1)
+            uv = downsampler(uv.transpose(1,2)).transpose(1,2)
         else:
             pred_f0 = pred_f0.squeeze(-1)
 
         # interpolate F0 at unvoiced region
         pred_f0 = pred_f0.detach().cpu().numpy().squeeze(0)  # [,Length]
+  
         pred_f0[uv_np == 0.0] = 0.0
 
         pred_f0, _ = self.f0_extractor.interpolate_f0(pred_f0)
         pred_f0 = (
             torch.from_numpy(pred_f0).float()[None, :, None].to(self.dev).to(self.dtype)
         )
-
         return pred_f0, uv
 
-    def get_technique_energy(self, energy, uv, target_pitch_style_id):
+    def get_technique_energy(
+        self,
+        energy,
+        uv,
+        target_pitch_style_id,
+        extent_scale_energy=1.0,
+        rate_scale_energy=1.0,
+    ):
         if self.energy_style_converter is not None:
             # predict technique energy contour
             low_energy, high_energy = separate_signal_dwt(
@@ -135,12 +145,50 @@ class Svc(BaseSVC):
             low_energy = torch.from_numpy(low_energy[None, :, None]).to(self.dev)
             high_energy = torch.from_numpy(high_energy[None, :, None]).to(self.dev)
 
+            # rate scaling: stretch/compress energy contour before style conversion
+            # (analogous to f0 rate scaling)
+            orig_len = low_energy.shape[1]
+            if rate_scale_energy != 1.0:
+                upsampler = torch.nn.Upsample(
+                    size=(int(orig_len * rate_scale_energy),)
+                )
+                low_energy = upsampler(low_energy.transpose(1, 2)).transpose(1, 2)
+                high_energy = upsampler(high_energy.transpose(1, 2)).transpose(1, 2)
+                uv_for_energy = upsampler(
+                    uv.view(1, -1, 1).transpose(1, 2)
+                ).transpose(1, 2)
+            else:
+                uv_for_energy = uv.view(1, -1, 1)
+
             pred_energy, _ = self.energy_style_converter(
                 low_energy,
-                uv.view(1, -1, 1),
+                uv_for_energy,
                 target_pitch_style_id,
                 high_energy if self.pitch_zeroshot else None,
             )
+
+            # rate scaling: downsample back to original length
+            if rate_scale_energy != 1.0:
+                downsampler = torch.nn.Upsample(size=(orig_len,))
+                pred_energy = downsampler(pred_energy.transpose(1, 2)).transpose(1, 2)
+
+            # extent scaling: scale high-frequency energy component
+            # f0: (2^high_lf0 - 1) * scale + 1  (log→linear 변환 후 scaling 필요)
+            # energy: already linear, so directly scale the high-freq deviation
+            if extent_scale_energy != 1.0:
+                pred_e_np = pred_energy.detach().cpu().numpy().squeeze()
+                low_pred_e, high_pred_e = separate_signal_dwt(
+                    pred_e_np, self.wavelet_func, self.wavelet_cutoff
+                )
+                low_pred_e = torch.from_numpy(low_pred_e).to(self.dev).to(
+                    pred_energy.dtype
+                )
+                high_pred_e = torch.from_numpy(high_pred_e).to(self.dev).to(
+                    pred_energy.dtype
+                )
+                pred_energy = (
+                    low_pred_e + high_pred_e  * extent_scale_energy
+                ).view(1, -1, 1)
 
             energy = pred_energy.view(1, -1, 1)
 
@@ -161,6 +209,8 @@ class Svc(BaseSVC):
         extent_scale_type,
         rate_scale,
         vocal_fry_enforcement,
+        extent_scale_energy=1.0,
+        rate_scale_energy=1.0,
     ):
         # get F0 contour
         if self.n_pitch_style != 1:
@@ -189,15 +239,23 @@ class Svc(BaseSVC):
         if self.n_pitch_style == 1 and vocal_fry_enforcement:
             f0_np /= 2
 
+
         # get energy contour
         if self.n_pitch_style != 1:
-            energy = self.get_technique_energy(energy, uv, target_pitch_style_id)
+            energy = self.get_technique_energy(
+                energy,
+                uv,
+                target_pitch_style_id,
+                extent_scale_energy=extent_scale_energy,
+                rate_scale_energy=rate_scale_energy,
+            )
 
         else:
             energy = energy.view(1, -1, 1).to(self.dev)
             energy = (energy - torch.mean(energy, dim=1, keepdim=True)) / torch.std(
                 energy, dim=1, keepdim=True
             )
+
         return f0, energy
 
     def infer_mel(
@@ -244,6 +302,8 @@ class Svc(BaseSVC):
         extent_scale=1.0,
         extent_scale_type="global",
         rate_scale=1.0,
+        extent_scale_energy=1.0,
+        rate_scale_energy=1.0,
         vocal_fry_enforcement=False,
     ):
         # load waveform
@@ -293,6 +353,8 @@ class Svc(BaseSVC):
                 extent_scale_type,
                 rate_scale,
                 vocal_fry_enforcement,
+                extent_scale_energy=extent_scale_energy,
+                rate_scale_energy=rate_scale_energy,
             )
         else:  # infer_mode == timbre or joint
             c, f0_np, uv_np, energy = self.get_unit_f0_shc(
@@ -351,9 +413,9 @@ class Svc(BaseSVC):
         if src_tech == "vocal_fry":
             f0_np, _ = subharmonics_correction(f0_np, uv_np)
 
-        with open("./configs/spk_stats_timbre.yaml", "r") as config:
-            spk_stat_config = yaml.safe_load(config)
-        f0_shift = spk_stat_config[target_spk] / np.mean(f0_np)
+        # with open("./configs/spk_stats_timbre.yaml", "r") as config:
+        #     spk_stat_config = yaml.safe_load(config)
+        f0_shift = self.spk_stat_config[target_spk] / np.mean(f0_np)
         f0_np = f0_shift * f0_np
 
         if target_pitch_style_id is not None:

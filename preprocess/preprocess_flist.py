@@ -45,10 +45,12 @@ def main(args):
         tech_dict = {}
         wav_list = os.listdir(f"{args.data_dir}/{speaker}")
         total_file_cnt += len(wav_list)
-        for fname in wav_list:
+        for fname in tqdm(wav_list):
             file_name = f"{args.data_dir}/{speaker}/{fname}"
 
+            
             technique_type = file_name.split("/")[-1].split("#")[2]
+           
             if technique_type not in style_config.keys():
                 continue
 
@@ -64,9 +66,10 @@ def main(args):
                 tech_dict[technique_type] = [file_name]
             else:
                 tech_dict[technique_type].append(file_name)
-
+            
+     
         # Split val & test set for 2 samples for each speaker and technique
-        if dataset_name == "VocalSet":
+        if dataset_name == "VocalSet" or dataset_name == "vocalset":
             for tech in tech_dict.keys():
                 tech_wavs = tech_dict[tech]
                 shuffle(tech_wavs)
@@ -75,7 +78,7 @@ def main(args):
                 val += tech_wavs[2:4]
                 test += tech_wavs[:2]
         # Split filelist for the gtsinger dataset
-        elif dataset_name == "GTSinger":
+        elif dataset_name == "GTSinger" or dataset_name == "gtsinger":
             for tech in tech_dict.keys():
 
                 tech_wavs = tech_dict[tech]

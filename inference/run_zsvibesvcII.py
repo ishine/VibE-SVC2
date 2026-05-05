@@ -49,6 +49,9 @@ def run(rank, n_gpus, args, audio_list, ref_list):
     extent_scale_type = args.extent_scale_type
     rate_scale = args.rate_scale
 
+    extent_scale_energy = args.extent_scale_energy
+    rate_scale_energy = args.rate_scale_energy
+
     vocal_fry_enforcement = args.vocal_fry_enforcement
 
     # Catch the exceptional task
@@ -72,6 +75,7 @@ def run(rank, n_gpus, args, audio_list, ref_list):
         rank,
         eps=float(d_config.data.eps),
         vocal_fry_enforcement=vocal_fry_enforcement,
+        spk_stat_config = spk_stat_config
     )
 
     # Set output directory
@@ -119,18 +123,21 @@ def run(rank, n_gpus, args, audio_list, ref_list):
             continue
 
         # Generate converted samples
-        for ref_idx, ref_path in enumerate(ref_list[rank]):
+        for ref_idx, ref_path in enumerate(ref_list):
             # Define reference audio path
-            ref_src = ref_list[rank][ref_idx].strip()
+            ref_src = ref_list[ref_idx].strip()
             ref_spk = ref_src.split("/")[-2]
+
             ref_tech = ref_src.split("/")[-1].split("#")[2]
+            # Skip reconstruction settings
+            if src_tech == ref_tech:
+                continue
+            
             ref_audio_path = f"{ref_dir}/{prev_rank_idx + idx}_{ref_idx}_{ref_spk}#{ref_tech}#{ref_src.split('/')[-1].split('#')[-1]}"
             if not os.path.exists(ref_audio_path):
                 shutil.copyfile(ref_src, ref_audio_path)
 
-            # Skip reconstruction settings
-            if src_tech == ref_tech:
-                continue
+            
 
             # Shifting f0 contour by a scaler factor based on precalculate statistics
             if ref_spk != src_spk:
@@ -156,6 +163,8 @@ def run(rank, n_gpus, args, audio_list, ref_list):
                     extent_scale=extent_scale,
                     extent_scale_type=extent_scale_type,
                     rate_scale=rate_scale,
+                    extent_scale_energy=extent_scale_energy,
+                    rate_scale_energy=rate_scale_energy,
                     vocal_fry_enforcement=vocal_fry_enforcement,
                 )
 

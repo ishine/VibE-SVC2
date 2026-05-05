@@ -10,13 +10,13 @@ DATASET_NAME = "GTSinger"
 
 def main(args):
     raw_dir = args.raw_dir
-    source_dir = args.target_dir
-    wav_list = glob(f"{raw_dir}/English/*/*/*/*/*.json")
+    source_dir = args.data_dir
+    wav_list = glob(f"{raw_dir}/English/*/*/*/*/*.wav")
 
     for wav_path in tqdm(wav_list, leave=True):
         task, lang, spk, style, song, ctrl_group, basename = wav_path.split("/")[-7:]
         target_fname = (
-            f"{source_dir}/{spk}/{spk}#{lang}#{ctrl_group}#{style}#{song}#{basename}"
+            f"{source_dir}/{DATASET_NAME}#{spk}/{spk}#{lang}#{ctrl_group}#{style}#{song}#{basename}"
         )
 
         os.makedirs(os.path.dirname(target_fname), exist_ok=True)

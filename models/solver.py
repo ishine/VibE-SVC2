@@ -85,10 +85,10 @@ def train(
     num_batches = len(loader_train)
     model.train()
     scaler = GradScaler()
-    dtype = torch.float16 if configs.trainer.cache.cache_fp16 else torch.float32
+    dtype = torch.float16 if configs.train.cache.cache_fp16 else torch.float32
 
     ############## Epoch 시작 ###############
-    for epoch in range(configs.trainer.optimizer.epochs):
+    for epoch in range(configs.train.optimizer.epochs):
         train_sampler.set_epoch(epoch)
         for batch_idx, data in enumerate(loader_train):
             optimizer.zero_grad()
@@ -132,7 +132,7 @@ def train(
 
             # log loss
             if rank == 0:
-                if saver.global_step % configs.trainer.logger.interval_log == 0:
+                if saver.global_step % configs.train.logger.interval_log == 0:
                     current_lr = optimizer.param_groups[0]["lr"]
                     saver.log_info(
                         "epoch: {} | {:2d}/{:2d} | {} | batch/s: {:.2f} | lr: {:.3} | loss: {:.3f} | time: {} | step: {}".format(
@@ -140,7 +140,7 @@ def train(
                             batch_idx,
                             num_batches,
                             configs.env.expdir,
-                            configs.trainer.logger.interval_log
+                            configs.train.logger.interval_log
                             / saver.get_interval_time(),
                             current_lr,
                             loss.item(),
@@ -153,19 +153,19 @@ def train(
 
                 # validation
                 if (
-                    saver.global_step % configs.trainer.logger.interval_val == 0
+                    saver.global_step % configs.train.logger.interval_val == 0
                     and saver.global_step != 0
                 ):
                     # Save model
                     saver.save_model(
                         model,
-                        optimizer if configs.trainer.logger.save_opt else None,
+                        optimizer if configs.train.logger.save_opt else None,
                         postfix=f"{saver.global_step}",
                     )
                     last_val_step = (
-                        saver.global_step - configs.trainer.logger.interval_val
+                        saver.global_step - configs.train.logger.interval_val
                     )
-                    if last_val_step % configs.trainer.logger.interval_force_save != 0:
+                    if last_val_step % configs.train.logger.interval_force_save != 0:
                         saver.delete_model(postfix=f"{last_val_step}")
 
                     # Generate Mel-Spec to tensorboard for validation
@@ -175,7 +175,7 @@ def train(
                 saver.global_step_increment()
         scheduler.step()
 
-        # Stop training
-        if saver.global_step == configs.train.optimizer.max_training_steps:
-            print("Training Done.")
-            return
+        # # Stop training
+        # if saver.global_step == configs.train.optimizer.max_training_steps:
+        #     print("Training Done.")
+        #     return

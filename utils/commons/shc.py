@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import mode
 
 
-def subharmonics_correction(f0_contour, uv):
+def subharmonics_correction(f0_contour, uv, scale_type='mode'):
     THRESHOLD_MIN = 0.25
     eps = 1e-6
     lf0 = np.log2(f0_contour + eps)
@@ -24,13 +24,16 @@ def subharmonics_correction(f0_contour, uv):
         else:
             corr_f0[i] = corr_f0[i - 1]  # Unvoiced segment
 
-    # Subharmonics scaling factor 구하기
+    # Get Subharmonics scaling factor
     uv_recon_f0 = np.copy(corr_f0)
     uv_recon_f0[uv == 0.0] = np.log2(eps)
 
     # Get mode value of difference between original log F0 and corrected log F0
     diff_voiced_f0 = masked_lf0[uv != 0.0] - uv_recon_f0[uv != 0.0]
-    scaler = mode(diff_voiced_f0).mode
+    if scale_type == 'mean':
+        scaler = np.mean(diff_voiced_f0)
+    else:  # 'mode'
+        scaler = mode(diff_voiced_f0).mode
 
     # Convert to constant scale
     corr_f0 = 2 ** (corr_f0 + scaler) - eps

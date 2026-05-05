@@ -79,7 +79,8 @@ class Svc(BaseSVC):
         uv = uv.view(1, 1, -1)
 
         # interpolate smooth f0
-        orig_len = low_f0.shape[1]
+        # orig_len = low_f0.shape[1]
+        orig_len = low_f0.shape[-1]
 
         # squeeze or stretch for rate control
         if rate_scale != 1.0:
@@ -112,6 +113,7 @@ class Svc(BaseSVC):
         if rate_scale != 1.0:
             downsampler = torch.nn.Upsample(size=(orig_len,))
             pred_f0 = downsampler(pred_f0.transpose(1, 2)).squeeze(1)
+            uv = downsampler(uv.transpose(1,2)).transpose(1,2)
         else:
             pred_f0 = pred_f0.squeeze(-1)
 
@@ -126,7 +128,7 @@ class Svc(BaseSVC):
 
         return pred_f0, uv
 
-    def get_technique_energy(self, energy, uv, ref_energy):
+    def get_technique_energy(self, energy, uv, ref_energy,extent_scale_energy=1.0,rate_scale_energy=1.0):
         if self.energy_style_converter is not None:
             # Separate technique source energy contour
             low_energy, _ = separate_signal_dwt(
@@ -143,10 +145,46 @@ class Svc(BaseSVC):
                 self.dev
             )
 
+            orig_len = low_energy.shape[1]
+            if rate_scale_energy != 1.0:
+                upsampler = torch.nn.Upsample(
+                    size=(int(orig_len * rate_scale_energy),)
+                )
+                low_energy = upsampler(low_energy.transpose(1, 2)).transpose(1, 2)
+                ref_high_energy = upsampler(ref_high_energy.transpose(1, 2)).transpose(1, 2)
+                uv_for_energy = upsampler(
+                    uv.view(1, -1, 1).transpose(1, 2)
+                ).transpose(1, 2)
+            else:
+                uv_for_energy = uv.view(1, -1, 1)
+
             # predict high-frequency F0 contour
             pred_energy, _ = self.energy_style_converter(
-                low_energy, uv.view(1, -1, 1), high_signal=ref_high_energy
+                low_energy, uv_for_energy, high_signal=ref_high_energy
             )
+
+            # rate scaling: downsample back to original length
+            if rate_scale_energy != 1.0:
+                downsampler = torch.nn.Upsample(size=(orig_len,))
+                pred_energy = downsampler(pred_energy.transpose(1, 2)).transpose(1, 2)
+
+            # extent scaling: scale high-frequency energy component
+            # f0: (2^high_lf0 - 1) * scale + 1  (log→linear 변환 후 scaling 필요)
+            # energy: already linear, so directly scale the high-freq deviation
+            if extent_scale_energy != 1.0:
+                pred_e_np = pred_energy.detach().cpu().numpy().squeeze()
+                low_pred_e, high_pred_e = separate_signal_dwt(
+                    pred_e_np, self.wavelet_func, self.wavelet_cutoff
+                )
+                low_pred_e = torch.from_numpy(low_pred_e).to(self.dev).to(
+                    pred_energy.dtype
+                )
+                high_pred_e = torch.from_numpy(high_pred_e).to(self.dev).to(
+                    pred_energy.dtype
+                )
+                pred_energy = (
+                    low_pred_e + extent_scale_energy * high_pred_e
+                ).view(1, -1, 1)
 
             energy = pred_energy.view(1, -1, 1)
 
@@ -168,6 +206,8 @@ class Svc(BaseSVC):
         extent_scale_type,
         rate_scale,
         vocal_fry_enforcement,
+        extent_scale_energy=1.0,
+        rate_scale_energy=1.0,
     ):
         if self.n_pitch_style > 1:
             f0, uv = self.get_technique_f0(
@@ -197,7 +237,7 @@ class Svc(BaseSVC):
 
         # get energy contour
         if self.n_pitch_style > 1:
-            energy = self.get_technique_energy(energy, uv, ref_energy)
+            energy = self.get_technique_energy(energy, uv, ref_energy,extent_scale_energy=extent_scale_energy,rate_scale_energy=rate_scale_energy)
 
         else:
             energy = energy.view(1, -1, 1).to(self.dev)
@@ -253,6 +293,8 @@ class Svc(BaseSVC):
         extent_scale_type="global",
         rate_scale=1.0,
         vocal_fry_enforcement=False,
+        extent_scale_energy=1.0,
+        rate_scale_energy=1.0,
     ):
         # load waveform
         wav, sr = torchaudio.load(raw_path)
@@ -297,6 +339,8 @@ class Svc(BaseSVC):
             extent_scale_type,
             rate_scale,
             vocal_fry_enforcement,
+            extent_scale_energy=extent_scale_energy,
+                rate_scale_energy=rate_scale_energy,
         )
 
         # generate Mel-Spectrogram through decoder

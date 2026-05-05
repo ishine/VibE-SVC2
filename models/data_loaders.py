@@ -15,29 +15,29 @@ def get_dataloader(args, n_gpus, task):
     dataset = AudioDataset(
         args,
         task,
-        fp16=args.trainer.cache.cache_fp16 if task == "train" else False,
+        fp16=args.train.cache.cache_fp16 if task == "train" else False,
         use_aug=args.model.aug_type.volume_aug if task == "train" else False,
-        device=args.trainer.cache.cache_device,
+        device=args.train.cache.cache_device,
     )
     data_sampler = DistributedSampler(dataset=dataset, shuffle=True)
     data_loader = torch.utils.data.DataLoader(
         dataset,
         batch_size=(
-            int(args.trainer.d_loader.batch_size / n_gpus) if task == "train" else 1
+            int(args.train.d_loader.batch_size / n_gpus) if task == "train" else 1
         ),
         shuffle=False,
         num_workers=(
-            int(args.trainer.d_loader.num_workers / n_gpus)
-            if args.trainer.cache.cache_device == "cpu"
+            int(args.train.d_loader.num_workers / n_gpus)
+            if args.train.cache.cache_device == "cpu"
             else 0
         ),
         persistent_workers=(
-            (args.trainer.d_loader.num_workers > 0)
-            if args.trainer.cache.cache_device == "cpu"
+            (args.train.d_loader.num_workers > 0)
+            if args.train.cache.cache_device == "cpu"
             else False
         ),
         sampler=data_sampler if task == "train" else None,
-        pin_memory=True if args.trainer.cache.cache_device == "cpu" else False,
+        pin_memory=True if args.train.cache.cache_device == "cpu" else False,
     )
     return data_loader, data_sampler
 

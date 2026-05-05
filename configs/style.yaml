@@ -3,6 +3,7 @@ pitch_technique:
   vibrato: 1
   Control_Group: 0
   Vibrato_Group: 1
+  Glissando_Group: 2
 timbre_technique:
   straight: 0
   belt: 1

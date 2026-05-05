@@ -75,15 +75,15 @@ def run(rank, n_gpus):
     if cmd.feature_type == "f0" or cmd.feature_type == "pitch":
         cmd.feature_type = "f0"
         if cmd.zero_shot:
-            encoder_config = model_args.pitch_tech_enc
-        else:
             encoder_config = model_args.zs_pitch_tech_enc
+        else:
+            encoder_config = model_args.pitch_tech_enc
     elif cmd.feature_type == "energy" or cmd.feature_type == "volume":
         cmd.feature_type = "energy"
         if cmd.zero_shot:
-            encoder_config = model_args.energy_tech_enc
-        else:
             encoder_config = model_args.zs_energy_tech_enc
+        else:
+            encoder_config = model_args.energy_tech_enc
     else:
         print("Wrong feature type")
         exit(0)

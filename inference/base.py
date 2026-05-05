@@ -30,6 +30,7 @@ class BaseSVC:
             self.dev = torch.device(device)
 
         self.svc_config = load_config(svc_config_path)
+        self.spk_stat_config = kwargs.get("spk_stat_config")
 
         self.dtype = torch.float32
         self.eps = kwargs.get("eps")
@@ -88,13 +89,21 @@ class BaseSVC:
                 self.pitch_style_converter_config = load_config(
                     pretrained_path_config["style_converter"]["pitch_ID"]["config"]
                 )
+                self.pitch_style_converter_model_config = load_config(
+                    pretrained_path_config["style_converter"]["pitch_ID"]["encoder_config"]
+                )
+                self.pitch_style_converter_model_type = pretrained_path_config["style_converter"]["pitch_ID"]["encoder_type"]
             else:
-
                 self.pitch_style_converter_config = load_config(
                     pretrained_path_config["style_converter"]["pitch_ZS"]["config"]
                 )
+                self.pitch_style_converter_model_config = load_config(
+                    pretrained_path_config["style_converter"]["pitch_ZS"]["encoder_config"]
+                )
+                self.pitch_style_converter_model_type = pretrained_path_config["style_converter"]["pitch_ZS"]["encoder_type"]
             self.pitch_style_converter = TechConverter(
-                self.pitch_style_converter_config["style_enc"],
+                # self.pitch_style_converter_config["style_enc"],
+                self.pitch_style_converter_model_config[self.pitch_style_converter_model_type],
                 self.n_pitch_style,
                 zero_shot=pitch_zeroshot,
             )
@@ -119,13 +128,22 @@ class BaseSVC:
                 self.energy_style_converter_config = load_config(
                     pretrained_path_config["style_converter"]["energy_ID"]["config"]
                 )
+                self.energy_style_converter_model_config = load_config(
+                    pretrained_path_config["style_converter"]["energy_ID"]["encoder_config"]
+                )
+                self.energy_style_converter_model_type = pretrained_path_config["style_converter"]["energy_ID"]["encoder_type"]
             else:
                 self.energy_style_converter_config = load_config(
                     pretrained_path_config["style_converter"]["energy_ZS"]["config"]
                 )
+                self.energy_style_converter_model_config = load_config(
+                    pretrained_path_config["style_converter"]["energy_ZS"]["encoder_config"]
+                )
+                self.energy_style_converter_model_type = pretrained_path_config["style_converter"]["energy_ZS"]["encoder_type"]
 
             self.energy_style_converter = TechConverter(
-                self.energy_style_converter_config["style_enc"],
+                # self.energy_style_converter_config["style_enc"],
+                self.energy_style_converter_model_config[self.energy_style_converter_model_type],
                 self.n_pitch_style,
                 zero_shot=pitch_zeroshot,
             )

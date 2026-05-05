@@ -51,7 +51,7 @@ def parse_args(args=None, namespace=None):
 def run(rank, n_gpus):
     cmd = parse_args()
     args = utils.load_config(cmd.config)
-    args.trainer.d_loader.num_workers = os.cpu_count()
+    args.train.d_loader.num_workers = os.cpu_count()
     dist.init_process_group(
         backend="gloo" if os.name == "nt" else "nccl",
         init_method="env://",
@@ -80,9 +80,9 @@ def run(rank, n_gpus):
     # Init optimizer
     optimizer = torch.optim.AdamW(
         model.parameters(),
-        args.trainer.optimizer.lr,
-        betas=args.trainer.optimizer.betas,
-        eps=float(args.trainer.optimizer.eps),
+        args.train.optimizer.lr,
+        betas=args.train.optimizer.betas,
+        eps=float(args.train.optimizer.eps),
     )
 
     # Load latest model and optimizer from checkpoints
@@ -94,7 +94,7 @@ def run(rank, n_gpus):
 
     scheduler = lr_scheduler.ExponentialLR(
         optimizer,
-        gamma=args.trainer.optimizer.gamma,
+        gamma=args.train.optimizer.gamma,
         last_epoch=(
             initial_global_step // len(loader_train) - 2
             if initial_global_step != 0
