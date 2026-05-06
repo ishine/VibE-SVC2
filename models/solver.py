@@ -173,6 +173,11 @@ def train(
                     saver.log_info(f" ==== Validation End ==== ")
                     model.train()
                 saver.global_step_increment()
+                if saver.global_step >= configs.train.optimizer.max_training_steps:
+                    saver.log_info(
+                        f"Training reached max_training_steps={configs.train.optimizer.max_training_steps}"
+                    )
+                    return
         scheduler.step()
 
         # # Stop training

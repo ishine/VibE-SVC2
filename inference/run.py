@@ -5,7 +5,7 @@ import warnings
 import torch
 import torch.multiprocessing as mp
 
-from utils.commons.utils import get_ref_list, split_list_per_gpus
+from utils.commons.utils import get_style_lists, split_list_per_gpus
 
 warnings.filterwarnings("ignore")
 
@@ -57,8 +57,14 @@ def main():
 
     audio_list = split_list_per_gpus(n_gpus, audio_pairs)
     if cfg.pitch_zeroshot:
-        ref_list = get_ref_list(audio_pairs)
-        ref_list = split_list_per_gpus(n_gpus, ref_list)
+        first_tech = audio_pairs[0].strip().split("/")[-1].split("#")[2]
+        if first_tech in ("Control_Group", "Vibrato_Group", "Glissando_Group"):
+            ref_ctrl, src_vib = get_style_lists(audio_pairs, "Control_Group")
+            balanced = ref_ctrl + src_vib
+            audio_list = split_list_per_gpus(n_gpus, balanced)
+            ref_list = balanced
+        else:
+            ref_list = [f.strip() for f in audio_pairs if f.strip()]
 
     if cfg.multi_infer:
         base_exp_dir = cfg.exp_dir

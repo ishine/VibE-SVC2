@@ -37,9 +37,9 @@ RENAME_FLIST = {
     "FULL/female4/scales/straight/scales_straight_u.wav": "FULL/female4/scales/straight/f4_scales_straight_u.wav",
     "FULL/male8/excerpts/vibrato/m9_caro_vibrato.wav": "FULL/male8/excerpts/vibrato/m8_caro_vibrato.wav",
     "FULL/male8/excerpts/straight/row_straight.wav": "FULL/male8/excerpts/straight/m8_row_straight.wav",
-    "FULL/male10/excerpts/vibrato/caro_vibrato.wav": "FULL/male8/excerpts/vibrato/m10_caro_vibrato.wav",
-    "FULL/male10/excerpts/vibrato/row_vibrato.wav": "FULL/male8/excerpts/vibrato/m10_row_vibrato.wav",
-    "FULL/male10/excerpts/vibrato/dona_vibrato.wav": "FULL/male8/excerpts/vibrato/m10_dona_vibrato.wav",
+    "FULL/male10/excerpts/vibrato/caro_vibrato.wav": "FULL/male10/excerpts/vibrato/m10_caro_vibrato.wav",
+    "FULL/male10/excerpts/vibrato/row_vibrato.wav": "FULL/male10/excerpts/vibrato/m10_row_vibrato.wav",
+    "FULL/male10/excerpts/vibrato/dona_vibrato.wav": "FULL/male10/excerpts/vibrato/m10_dona_vibrato.wav",
     "FULL/male10/scales/fast_piano/scales_c_fast_piano_a.wav": "FULL/male10/scales/fast_piano/m10_scales_c_fast_piano_a.wav",
     "FULL/male10/scales/fast_piano/scales_c_fast_piano_e.wav": "FULL/male10/scales/fast_piano/m10_scales_c_fast_piano_e.wav",
     "FULL/male10/scales/fast_piano/scales_c_fast_piano_i.wav": "FULL/male10/scales/fast_piano/m10_scales_c_fast_piano_i.wav",
@@ -72,10 +72,10 @@ def raw_file_correction():
 
 
 def flatten_filename(args):
-    staright_files = glob(f"{DATASET_DIR}/FULL/*/*/straight/*.wav")
-    vibrato_files = glob(f"{DATASET_DIR}/FULL/*/*/vibrato/*.wav")
-
-    all_files = staright_files + vibrato_files
+    techniques = ["straight", "vibrato", "belt", "breathy", "vocal_fry"]
+    all_files = []
+    for tech in techniques:
+        all_files += glob(f"{DATASET_DIR}/FULL/*/*/{tech}/*.wav")
     print("Flatten file names...")
     for fpath in tqdm(all_files):
         spk = fpath.split("/")[-4]

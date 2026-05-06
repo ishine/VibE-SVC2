@@ -10,6 +10,10 @@ data:
   f0_predictor: rmvpe
 
   # content encoder config
+  encoder: hubertsoft
+  encoder_hop_size: 320
+  encoder_out_channels: 256
+  encoder_sample_rate: 16000
   encoder_unit_interpolate_mode: nearest
   
   # filelist config
@@ -55,7 +59,6 @@ singing_techniques:
     vibrato: 1
     Control_Group: 0
     Vibrato_Group: 1
-    Glissando_Group: 2
   timbre_tech:
     straight: 0
     belt: 1

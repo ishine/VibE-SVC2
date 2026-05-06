@@ -39,11 +39,13 @@ def main(args):
     elif args.style_type == "timbre":
         style_config = config.singing_techniques.timbre_tech
 
-    for speaker in tqdm(os.listdir(args.data_dir)):
+    for speaker in tqdm(sorted(os.listdir(args.data_dir))):
         dataset_name = speaker.split("#")[0]
 
         tech_dict = {}
-        wav_list = os.listdir(f"{args.data_dir}/{speaker}")
+        wav_list = sorted(
+            f for f in os.listdir(f"{args.data_dir}/{speaker}") if f.endswith(".wav")
+        )
         total_file_cnt += len(wav_list)
         for fname in tqdm(wav_list):
             file_name = f"{args.data_dir}/{speaker}/{fname}"
@@ -68,6 +70,13 @@ def main(args):
                 tech_dict[technique_type].append(file_name)
             
      
+        # Eval-only mode: all entries go to test, no train/val split
+        if getattr(config.data, "eval_only", False):
+            for tech in tech_dict.keys():
+                tech_wavs = tech_dict[tech]
+                shuffle(tech_wavs)
+                test += tech_wavs
+            continue
         # Split val & test set for 2 samples for each speaker and technique
         if dataset_name == "VocalSet" or dataset_name == "vocalset":
             for tech in tech_dict.keys():
@@ -107,12 +116,13 @@ def main(args):
     logger.info(f"Total : {total_file_cnt} files, Skip : {skip_file_cnt} files.")
     logger.info(f"Filelist environment : {train_list_path}" + "\n")
 
-    with open(train_list_path, "w") as f:
-        for fname in tqdm(train):
-            f.write(str(fname) + "\n")
-    with open(val_list_path, "w") as f:
-        for fname in tqdm(val):
-            f.write(str(fname) + "\n")
+    if not getattr(config.data, "eval_only", False):
+        with open(train_list_path, "w") as f:
+            for fname in tqdm(train):
+                f.write(str(fname) + "\n")
+        with open(val_list_path, "w") as f:
+            for fname in tqdm(val):
+                f.write(str(fname) + "\n")
     with open(test_list_path, "w") as f:
         for fname in tqdm(test):
             f.write(str(fname) + "\n")

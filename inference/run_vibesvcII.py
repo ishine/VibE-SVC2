@@ -47,6 +47,8 @@ def run(rank, n_gpus, args, audio_list):
     extent_scale = args.extent_scale
     extent_scale_type = args.extent_scale_type
     rate_scale = args.rate_scale
+    extent_scale_energy = args.extent_scale_energy
+    rate_scale_energy = args.rate_scale_energy
 
     vocal_fry_enforcement = args.vocal_fry_enforcement
 
@@ -67,6 +69,7 @@ def run(rank, n_gpus, args, audio_list):
         rank,
         eps=float(d_config.data.eps),
         vocal_fry_enforcement=vocal_fry_enforcement,
+        spk_stat_config = spk_stat_config
     )
 
     # check task
@@ -93,11 +96,11 @@ def run(rank, n_gpus, args, audio_list):
     # Main stream
     for idx, src in enumerate(tqdm(audio_list[rank])):
         src = src.strip()
-        src_spk = src.split("/")[3]
-        src_style = src.split("/")[4].split("#")[2]
+        src_spk = src.split("/")[2]
+        src_style = src.split("/")[3].split("#")[2]
 
         # copy GT & Reference audio from raw path
-        gt_audio_path = f"{gt_dir}/{prev_rank_idx + idx}_{src_spk}#{src_style}#{src.split('/')[4].split('#')[-1]}"
+        gt_audio_path = f"{gt_dir}/{prev_rank_idx + idx}_{src_spk}#{src_style}#{src.split('/')[3].split('#')[-1]}"
         if not os.path.exists(gt_audio_path):
             shutil.copyfile(src, gt_audio_path)
 
@@ -109,7 +112,7 @@ def run(rank, n_gpus, args, audio_list):
         # Generate vocoded samples
         if vocoded:
             gen_audio = svc_model.vocoded(gt_audio_path)
-            gen_audio_path = f"{gen_dir}/{prev_rank_idx + idx}_{src_spk}#{src_style}#{src.split('/')[4].split('#')[-1]}"
+            gen_audio_path = f"{gen_dir}/{prev_rank_idx + idx}_{src_spk}#{src_style}#{src.split('/')[3].split('#')[-1]}"
             soundfile.write(
                 gen_audio_path, gen_audio, svc_model.target_sample, format="wav"
             )
@@ -152,11 +155,13 @@ def run(rank, n_gpus, args, audio_list):
                     extent_scale=extent_scale,
                     extent_scale_type=extent_scale_type,
                     rate_scale=rate_scale,
+                    extent_scale_energy=extent_scale_energy,
+                    rate_scale_energy=rate_scale_energy,
                     vocal_fry_enforcement=vocal_fry_enforcement,
                 )
 
             # Save the generated audio
-            gen_audio_path = f"{gen_dir}/{prev_rank_idx + idx}_{spk}#{src_style}#{src.split('/')[4].split('#')[-1]}"
+            gen_audio_path = f"{gen_dir}/{prev_rank_idx + idx}_{spk}#{src_style}#{src.split('/')[3].split('#')[-1]}"
             soundfile.write(
                 gen_audio_path, gen_audio, svc_model.target_sample, format="wav"
             )

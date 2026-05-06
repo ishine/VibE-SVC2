@@ -1,10 +1,12 @@
 import logging
 import os
+import random
 import subprocess
 import sys
 from collections import deque
 
 import numpy as np
+import soundfile as sf
 import torch
 import yaml
 from scipy.io.wavfile import read
@@ -166,16 +168,118 @@ def list_to_chunk(lst, n):
 
 def get_ref_list(audio_list, mp=False):
     ref_list = []
-    style_dict = {"straight": deque(), "vibrato": deque()}
-    for fname in audio_list:
-        ftech = fname.split("/")[-1].split("#")[2]
-        style_dict[ftech].append(fname)
+    style_dict = {"straight": deque(), "vibrato": deque(), "Control_Group" : deque(), "Vibrato_Group" : deque()}
+    new_audio_list = []
 
     for fname in audio_list:
+        fname = fname.strip()
+        basename = fname.split("/")[-1]
+
+        # Condition 1a: _0.wav 샘플만 포함
+        if not basename.split("#")[-1].endswith("_0.wav"):
+            continue
+
+        # Condition 1b: 10초 미만 샘플만 포함
+        if sf.info(fname).duration >= 10.0:
+            continue
+
+        ftech = basename.split("#")[2]
+        if ftech not in style_dict:
+            continue
+        if len(style_dict[ftech]) < 35:
+            style_dict[ftech].append(fname)
+            new_audio_list.append(fname)
+
+    # Condition 2: 각 쌍의 개수를 작은 쪽에 맞춰 균형을 맞춤
+    # straight <-> vibrato
+    n_straight = len(style_dict["straight"])
+    n_vibrato_vc = len(style_dict["vibrato"])
+    if n_straight != n_vibrato_vc:
+        n_min = min(n_straight, n_vibrato_vc)
+        for key in ("straight", "vibrato"):
+            excess = set(list(style_dict[key])[n_min:])
+            style_dict[key] = deque(list(style_dict[key])[:n_min])
+            new_audio_list = [f for f in new_audio_list if f not in excess]
+
+    # Control_Group <-> Vibrato_Group
+    n_vibrato = len(style_dict["Vibrato_Group"])
+    if len(style_dict["Control_Group"]) > n_vibrato:
+        excess = set(list(style_dict["Control_Group"])[n_vibrato:])
+        style_dict["Control_Group"] = deque(list(style_dict["Control_Group"])[:n_vibrato])
+        new_audio_list = [f for f in new_audio_list if f not in excess]
+
+    random.seed(42)
+    random.shuffle(new_audio_list)
+
+    for fname in new_audio_list:
         ftech = fname.split("/")[-1].split("#")[2]
+
         if ftech == "straight":
             target_tech = "vibrato"
-        else:
+        elif ftech == "vibrato":
             target_tech = "straight"
+        elif ftech == "Control_Group":
+            target_tech = "Vibrato_Group"
+        elif ftech == "Vibrato_Group":
+            target_tech = "Control_Group"
+        else:
+            continue
+
         ref_list.append(style_dict[target_tech].popleft())
-    return ref_list
+
+    return ref_list, new_audio_list
+
+
+def get_style_lists(audio_list, target_tech, clip_filter=True, duration_filter=True, shuffle=True):
+    """
+    target_tech 기반으로 ref_list와 source_list를 분리 반환.
+
+    Args:
+        audio_list      : filelist 줄 목록 (strip 미적용 상태여도 무방)
+        target_tech     : 변환 대상 style ('straight'|'vibrato'|'Control_Group'|'Vibrato_Group')
+        clip_filter     : True이면 _0.wav 파일만 포함 (GTSinger 기본값)
+        duration_filter : True이면 10초 미만 파일만 포함 (GTSinger 기본값)
+        shuffle         : True이면 ref/source 순서를 랜덤 셔플 (GTSinger용, seed=42 고정)
+
+    Returns:
+        (ref_list, source_list)
+        ref_list    — target_tech style 파일들
+        source_list — 반대 style 파일들 (source → target 변환에 사용)
+        두 리스트 길이는 min(len_ref, len_source)로 균형 맞춤.
+    """
+    tech_pair = {
+        "straight":     "vibrato",
+        "vibrato":      "straight",
+        "Control_Group":  "Vibrato_Group",
+        "Vibrato_Group":  "Control_Group",
+    }
+    source_tech = tech_pair[target_tech]
+
+    ref_bucket    = []
+    source_bucket = []
+
+    for fname in audio_list:
+        fname = fname.strip()
+        if not fname:
+            continue
+        basename = fname.split("/")[-1]
+
+        if clip_filter and not basename.split("#")[-1].endswith("_0.wav"):
+            continue
+        if duration_filter and sf.info(fname).duration >= 10.0:
+            continue
+
+        ftech = basename.split("#")[2]
+        if ftech == target_tech:
+            ref_bucket.append(fname)
+        elif ftech == source_tech:
+            source_bucket.append(fname)
+
+    if shuffle:
+        random.seed(42)
+        random.shuffle(ref_bucket)
+        random.seed(42)
+        random.shuffle(source_bucket)
+
+    n = min(len(ref_bucket), len(source_bucket))
+    return ref_bucket[:n], source_bucket[:n]
