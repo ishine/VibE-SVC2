@@ -8,7 +8,6 @@ filelists/*
 logs/*
 pretrain/*
 results/*
-vocoder/*
 
 style_predictor/*/__pycache__/*
 style_predictor/*/*.pt

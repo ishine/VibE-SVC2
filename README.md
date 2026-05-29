@@ -62,6 +62,9 @@ We use the pre-trained feature extractors available from [so-vits-svc](https://g
 - **F0 extractor**: [RMVPE](https://github.com/yxlllc/RMVPE/releases/) 
 
 
+### 2.4 Vocoder
+Download BigVGAN_v2 vocoder from [huggingface](https://huggingface.co/nvidia/bigvgan_v2_24khz_100band_256x) and place files to `vocoder/` folder.
+
 
 ## 3. Data Preparation & Preprocessing
 
