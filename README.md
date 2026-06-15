@@ -1,8 +1,8 @@
-# VibE-SVC2
+# The official implementation of VibE-SVC2
 
-**A Vibrato Controlling Method by Predicting High-frequency F0 contour for Singing Voice Conversion** *(Under review)*
+### A Vibrato Controlling Method by Predicting High-frequency F0 contour for Singing Voice Conversion (IEEE TASLP 2026)
 
-Joon-Seung Choi, Dong-Min Byun, and Seong-Whan Lee
+#### Joon-Seung Choi, Dong-Min Byun, and Seong-Whan Lee
 
 [![demo](https://img.shields.io/badge/GitHub-Demo-green.svg)](https://castlechoi.github.io/VibE-SVC2-demo/)
 
@@ -12,7 +12,7 @@ Joon-Seung Choi, Dong-Min Byun, and Seong-Whan Lee
 
 ---
 
-## 📑 Contents
+## Contents
 
 1. [Setup](#1-setup)
 2. [Pre-trained Checkpoints](#2-pre-trained-checkpoints)
@@ -37,38 +37,35 @@ pip install -r requirements.txt
 
 Download from [Google Drive](https://drive.google.com/drive/folders/1HJfU-MVYvlJVV1jkeXln8jJfdHAbC0N0?usp=drive_link) or [Hugging Face](https://huggingface.co/castlechoi/vibesvc2/tree/main) and place each file in the path shown below.
 
-### 2.1 SVC Models
-
-| Model | Path | Dataset | Styles |
-|---|---|---|---|
-| Pitch Style Conversion | `pretrain/vibe_pitch` | VocalSet | Straight / Vibrato |
-| Timbre Style Conversion | `pretrain/vibe_timbre` | VocalSet | Straight / Belt / Breathy / Vocal Fry |
-| Pitch Style Conversion (GTSinger) | `logs/vibe_pitch_gtsinger/diffusion` | GTSinger | Control / Vibrato (zero-shot) |
-
-### 2.2 Style Converters
-
-| Cond. Type | Converter | Path | Dataset | Styles |
+### SVC Models
+|Model type | Path | Dataset| Style | Lang.| 
 |---|---|---|---|---|
-| ID | Pitch | `pretrain/style_converter/pitch_ID` | VocalSet | Straight / Vibrato |
-| ID | Energy | `pretrain/style_converter/energy_ID` | VocalSet | Straight / Vibrato |
-| Reference high-freq. F0 | Pitch | `pretrain/style_converter/pitch_ZS` | GTSinger | Straight / Vibrato |
-| Reference high-freq. F0 | Energy | `pretrain/style_converter/energy_ZS` | GTSinger | Straight / Vibrato |
+| Pitch Style Conversion | `pretrain/vibe_pitch` | VocalSet | Straight<br> Vibrato | En |
+| Timbre Style Conversion | `pretrain/vibe_timbre` | VocalSet | Straight<br>Belt<br>Breathy<br> Vocal Fry| En
 
-### 2.3 Feature Extractors
+###  Style Converters
+Download and copy files checkpoints to each directory as `pretrain/{converter}/*.pt`.
 
-We use the pre-trained feature extractors available from [so-vits-svc](https://github.com/svc-develop-team/so-vits-svc):
+|Cond. Type| Converter Type|Path|Dataset| Style | Lang. |
+|---|---|---|---|---|---|
+|Style ID | Pitch |`pretrain/style_converter/pitch_ID` |VocalSet| Straight<br>Vibrato| En | 
+|Style ID | Energy|`pretrain/style_converter/energy_ID`|VocalSet| Straight<br>Vibrato| En |
+|$F0_{high}$| Pitch |`pretrain/style_converter/pitch_ZS` |GTSinger| Straight<br>Vibrato| En  |
+|$Energy_{high}$| Energy|`pretrain/style_convert/energy_ZS`  |GTSinger| Straight<br>Vibrato| En |
 
-- **Content encoder**: [HuBERT-soft](https://github.com/bshall/hubert/releases/)
-- **F0 extractor**: [RMVPE](https://github.com/yxlllc/RMVPE/releases/) 
+
+###  Feature Extractors
+
+Various kinds of pre-trained feature extractors are available on [so-vits-svc](https://github.com/svc-develop-team/so-vits-svc) repository. In this work, we adopted pre-trained [HuBERT-soft](https://github.com/bshall/hubert/releases/) and [RMVPE](https://github.com/yxlllc/RMVPE/releases/) models.
 
 
-### 2.4 Vocoder
+### Vocoder
 Download BigVGAN_v2 vocoder from [huggingface](https://huggingface.co/nvidia/bigvgan_v2_24khz_100band_256x) and place files to `vocoder/` folder.
 
 
 ## 3. Data Preparation & Preprocessing
 
-### 3.1 VocalSet
+### VocalSet
 
 Prepare [VocalSet](https://zenodo.org/records/1193957) so `dataset/VocalSet/FULL/...` exists, then run:
 
@@ -90,7 +87,7 @@ The flatten step covers all 5 techniques: **straight, vibrato, belt, breathy, vo
 - `filelists/vocalset_pitch/{train,val,test}.txt` — straight + vibrato
 - `filelists/vocalset_timbre/{train,val,test}.txt` — straight + belt + breathy + vocal_fry
 
-### 3.2 GTSinger
+### GTSinger
 
 Prepare the **English** subset of [GTSinger](https://huggingface.co/datasets/GTSinger/GTSinger) so `dataset/GTSinger/English/...` exists, then run:
 
@@ -123,31 +120,38 @@ The glissando filelist is generated via `configs/vibe_style_encoder_gtsinger_gli
 python inference_main.py [options]
 ```
 
-### 4.1 Common Arguments
+### Inference Arguments
 
-| Group | Arg | Description |
-|---|---|---|
-| Env | `-m`, `--model_path` | SVC checkpoint |
-|     | `-c`, `--config_path` | Model config |
-|     | `-f`, `--filelist` | Test filelist |
-|     | `-e`, `--exp_dir` | Output dir under `results/` |
-|     | `-s`, `--stats_path` | Speaker F0 stats yaml |
-| Features | `-f0p`, `--f0_predictor` | `rmvpe` / `crepe` / `dio` |
-|          | `-ks`, `--k_step` | Diffusion timestep |
-| Mode | `--infer_mode` | `pitch` / `timbre` / `joint` |
-|      | `--target_pitch_style` | `straight` / `vibrato` / `Control_Group` / `Vibrato_Group` |
-|      | `--target_timbre_style` | `straight` / `belt` / `breathy` / `vocal_fry` |
-|      | `--pitch_zeroshot` | Enable zero-shot pitch transfer |
-| Vibrato control | `--extent_scale` | Vibrato extent scale α (default 1.0) |
-|                 | `--extent_scale_type` | `global` / `inc_linear` / `dec_linear` / `sinusoidal` |
-|                 | `--rate_scale` | Vibrato rate scale β (default 1.0) |
-|                 | `--vocal_fry_enforcement` | Force vocal-fry behaviour |
-| Misc | `--multi_infer` | Convert to **all** target styles (output → `{env}/to_{tech}/`) |
-|      | `-rcs`, `--recon_spk` | Reconstruct with source speaker |
-|      | `-rct`, `--recon_tech` | Reconstruct with source technique |
-|      | `--vocoded` | Generate vocoded reference |
+#### Environment parameters
+- `-m` | `--model_path` : Path to model checkpoint.
+- `-c` | `--config_path` : Path to configuration.
+- `-f` | `--filelist` : Path to test filelist.
+- `-e` | `--exp_dir` : Path to result directory.
 
-### 4.2 Pitch Style Conversion (Target ID)
+#### Feature extraction parameters
+- `-ks` | `--k_step` : The timestep of diffusion decoder.
+- `-f0p` | `--f0_predictor` : Select F0 extractor. Available on `rmvpe`,.`crepe`, `dio`.
+
+#### Inference mode parameters
+- `--infer_mode` : Select inference mode of the SVC model. `pitch`, `timbre`, and `joint` is available.
+- `--target_pitch_style` : Select the pitch technique to control. `straight` and `vibrato` is available at the pre-trained model.
+- `--target_timbre_style` : Select the timbre technique to control. `straight`, `belt`, `breathy`, and `vocal_fry` is available at the pre-trained model.
+####
+- `--rate_scale` : Select the scaling factor of the vibrato rate $\beta$.
+- `--vocal_fry_enforcement` : Select the usage of vocal fry enforcement. 
+####
+- `--extent_scale` : Select the scaling factor of the vibrato extent $\alpha$.
+- `--extent_scale_type` : Select the scaling type of the vibrato extent. Available on `global`, `inc_linear`, `dec_linear`, `sinusoidal`.
+
+
+Experimental parameter
+- `--multi_infer` : Convert all styles of each technique type except for source technique. If the command status is on, the result will be generated at `{env}/to_{technique}` folder.
+- `-rcs` | `--recon_spk` : Reconstruct audio with the source speaker. 
+- `-rct` | `--recon_tech` : Reconstruct audio with the source technique.
+- `-vcr` | `--vocoded` : Generate vocoded audio.
+
+
+### Pitch Style Conversion (Target ID)
 
 ```bash
 python inference_main.py \
@@ -163,7 +167,7 @@ python inference_main.py \
     --rate_scale 1.0
 ```
 
-### 4.3 Pitch Style Conversion (Zero-Shot)
+### Pitch Style Conversion (Zero-Shot)
 
 
 **VocalSet → VocalSet** (using the VocalSet pitch model):
@@ -202,7 +206,7 @@ python inference_main.py \
 
 Outputs are written to `results/{exp_dir}/{gt,ref,gen}/`.
 
-### 4.4 Timbre Style Conversion (Target ID)
+### Timbre Style Conversion (Target ID)
 
 ```bash
 python inference_main.py \
@@ -216,7 +220,7 @@ python inference_main.py \
     --target_timbre_style vocal_fry
 ```
 
-### 4.5 Joint Pitch + Timbre Conversion
+### Joint Pitch + Timbre Conversion
 
 Use the timbre model for joint conversion.
 
@@ -239,7 +243,7 @@ python inference_main.py \
 
 ## 5. Training
 
-### 5.1 SVC Models
+### SVC Models
 
 ```bash
 # Pitch Style Conversion
@@ -249,14 +253,8 @@ python train.py -c configs/vibe_pitch.yaml
 python train.py -c configs/vibe_timbre.yaml
 ```
 
-### 5.2 Style Converters
+### Style Converters
 
-| Variant | Data | Flag |
-|---|---|---|
-| `Pitch_ID` | VocalSet | — |
-| `Pitch_ZS` | GTSinger | `--zero_shot` |
-| `Energy_ID` | VocalSet | — |
-| `Energy_ZS` | GTSinger | `--zero_shot` |
 
 ```bash
 # Pitch_ID
